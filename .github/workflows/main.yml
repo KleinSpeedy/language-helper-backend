@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Build docker image
+        run: docker build -t langhelp/backend . -f docker/Dockerfile
+      -
+        name: Run tests
+        run: docker run --rm langhelp/backend go test .
