@@ -1,0 +1,11 @@
+# BUILD STAGE
+FROM golang:1.19 as build-stage
+
+ENV GOOS linux
+ENV CGO_ENABLED 0
+WORKDIR /backend
+
+COPY go.mod go.sum ./
+RUN go mod download
+COPY *.go ./
+RUN go build -o lh_backend
