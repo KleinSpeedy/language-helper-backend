@@ -13,6 +13,8 @@ func setupRouter() *gin.Engine {
 	// Disable Console Color
 	// gin.DisableConsoleColor()
 	r := gin.Default()
+	// Dont trust all proxies
+	r.SetTrustedProxies(nil)
 
 	// Ping test
 	r.GET("/ping", func(c *gin.Context) {
