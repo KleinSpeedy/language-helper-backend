@@ -1,0 +1,62 @@
+== Language-Helper
+
+Simple language learning helper backend using `go` and the
+`gin framework`.
+
+=== `dewit.sh`
+
+Runs the application without building it.
+
+=== Test with mysql database
+
+To start the mysql test database, provide tables and dummy data to te
+test-db.sql. In addition you need to provide the following *ENV*
+variables in a `.env` file:
+
+[source,sh]
+----
+MYSQL_DATABASE
+MYSQL_USER
+MYSQL_PASSWORD
+MYSQL_ROOT_PASSWORD
+MYSQL_PORT
+----
+
+Start the mysql test database with:
+
+[source,sh]
+----
+docker compose up -d
+----
+
+If nothing fails, start the application with:
+
+[source,sh]
+----
+go run .
+----
+
+=== *Dockerization*
+
+Build Docker image for go backend - DEV version:
+
+[source,sh]
+----
+docker build -t langhelp/backend_dev . -f docker/Dockerfile.dev
+----
+
+Run tests for go app:
+
+[source,sh]
+----
+docker run --rm langhelp/backend_dev go test -v ./...
+----
+
+TODO: Add database tests
+
+Run docker image:
+
+[source,sh]
+----
+docker run -d -p 8080:8080 --name go_backend langhelp/backend_dev ./lh_backend
+----
