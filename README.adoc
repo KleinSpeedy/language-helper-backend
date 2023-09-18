@@ -11,7 +11,7 @@ Runs the application without building it.
 
 To start the mysql test database, provide tables and dummy data to te
 test-db.sql. In addition you need to provide the following *ENV*
-variables in a `.env` file:
+variables. Place them inside a *.env* file.
 
 [source,sh]
 ----
@@ -29,11 +29,11 @@ Start the mysql test database with:
 docker compose up -d
 ----
 
-If nothing fails, start the application with:
+If nothing fails you can test the application with:
 
 [source,sh]
 ----
-go run .
+./dewit.sh
 ----
 
 === *Dockerization*

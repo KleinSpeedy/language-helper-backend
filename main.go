@@ -7,15 +7,9 @@ import (
 
 	"github.com/KleinSpeedy/language-helper-backend/api"
 	"github.com/KleinSpeedy/language-helper-backend/database"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	user := os.Getenv("MYSQL_USER")
 	pw := os.Getenv("MYSQL_PASSWORD")
 	name := os.Getenv("MYSQL_DATABASE")
